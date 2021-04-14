@@ -1,0 +1,24 @@
+<div class="expansion-grid">
+  <mat-expansion-panel [expanded]="panelOpenState" class="expansion-panel" >
+    <mat-expansion-panel-header class="expansion-header" (click)="toggle()">
+      <mat-panel-title class="expansion-title">
+        {{title}}
+      </mat-panel-title>
+      <mat-panel-description class="description">
+        <span *ngIf="!panelOpenState" class="collapse">Rozwiń</span>
+        <span *ngIf="panelOpenState">Zwiń </span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="extended-filters">
+        <app-grid-table
+          [data]="data"
+          [noSelection]="noSelection"
+          (itemsSelected)="gridItemsSelected($event)">
+        </app-grid-table>
+    </div>
+  </mat-expansion-panel>
+</div>
+
+
+
+

@@ -1,0 +1,22 @@
+.chip {
+  height: 24px;
+  border-radius: 5px;
+  color: white;
+  padding:1px 10px;
+  width: min-content;
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+    color:white;
+  }
+
+  span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    white-space: nowrap;
+    //padding:10px;
+  };
+}

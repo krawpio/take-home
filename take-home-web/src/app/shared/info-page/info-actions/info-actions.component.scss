@@ -1,0 +1,12 @@
+.buttons-panel {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  padding:20px 40px;
+  margin-top:20px;
+  border-top: 1px solid #F5F5F5;
+
+  button {
+    margin-left: 10px;
+  }
+}

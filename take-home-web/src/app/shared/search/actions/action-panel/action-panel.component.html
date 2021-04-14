@@ -1,0 +1,35 @@
+<div class="actions-panel">
+  <div class="help-panel">
+    <span *ngIf="selected.length == 0">Select the items to perform the action</span>
+    <span *ngIf="selected.length > 0">Selected: {{selected.length}}</span>
+  </div>
+  <div class="buttons-panel">
+    <ng-container *ngFor="let action of actions">
+      <ng-container [ngSwitch]="action.buttonType">
+        <button *ngSwitchDefault
+                [disabled]="disabled(action)"
+                mat-button
+                (click)="functionApply(action)">
+          <mat-icon *ngIf="action.icon">{{action.icon}}</mat-icon>
+          {{action.label}}
+        </button>
+        <button *ngSwitchCase="'flat'"
+                [disabled]="disabled(action)"
+                mat-flat-button
+                (click)="functionApply(action)"
+                color="accent">
+          <mat-icon *ngIf="action.icon">{{action.icon}}</mat-icon>
+          {{action.label}}
+        </button>
+        <button *ngSwitchCase="'stroked'"
+                [disabled]="disabled(action)"
+                mat-stroked-button
+                (click)="functionApply(action)"
+                class="stroked-button">
+          <mat-icon *ngIf="action.icon">{{action.icon}}</mat-icon>
+          {{action.label}}
+        </button>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

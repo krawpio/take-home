@@ -1,0 +1,30 @@
+$hover-background-color: #E3CBB1;
+
+
+.apartment-item {
+  //width: 300px;
+  padding:24px;
+  border-bottom: 1px solid #F5F5F5;
+  outline: none;
+
+  .name {
+    color:grey;
+  }
+
+  .address {
+    font-size: 16px;
+  }
+
+  .other {
+    color: grey;
+  }
+
+  .price {
+    font-weight: bold;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-background-color;
+  }
+}

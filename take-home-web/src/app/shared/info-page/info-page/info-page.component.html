@@ -1,0 +1,17 @@
+<ng-container *ngIf="infoFields?.length > 0">
+  <div class="details">
+    <app-info-details [title]="title"></app-info-details>
+    <app-info-general-content [infoFields]="infoFields" [editMode]="editMode">
+    </app-info-general-content>
+    <div class="details-content">
+      <ng-content select="[details]" ></ng-content>
+    </div>
+  </div>
+  <ng-container *ngIf="editable && actions">
+    <app-info-actions [actions]="actions"></app-info-actions>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="!(infoFields?.length > 0)" >
+  <ng-content select="[fullDetails]" ></ng-content>
+</ng-container>
+

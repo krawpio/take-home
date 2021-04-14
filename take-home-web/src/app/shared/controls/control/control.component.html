@@ -1,0 +1,48 @@
+<div>
+  <label *ngIf="!hideLabel" [attr.for]="control.key">{{control.label}}</label>
+  <div *ngIf="form && isInvalid()" class="invalid-feedback">
+    <div *ngIf="form.controls[control.key].errors.required">Required</div>
+  </div>
+  <div [ngSwitch]="control.controlType" class="standard-input">
+    <app-textbox
+      *ngSwitchCase="'textbox'"
+      (valueChanged)="onValueChange($event)"
+      [control]="control"
+      [form]="form">
+    </app-textbox>
+    <app-daterange
+      *ngSwitchCase="'daterange'"
+      (valueChanged)="onValueChange($event)"
+      [control]="control"
+      [form]="form">
+    </app-daterange>
+    <app-date
+      *ngSwitchCase="'date'"
+      (valueChanged)="onValueChange($event)"
+      [control]="control"
+      [form]="form">
+    </app-date>
+    <app-radio
+      *ngSwitchCase="'radio'"
+      (valueChanged)="onValueChange($event)"
+      [control]="control"
+      [form]="form"></app-radio>
+    <app-dropdown
+      *ngSwitchCase="'dropdown'"
+      (valueChanged)="onValueChange($event)"
+      [control]="control"
+      [form]="form">
+    </app-dropdown>
+    <app-selection-dropdown
+      *ngSwitchCase="'selection-dropdown'"
+      (valueChanged)="onValueChange($event)"
+      [control]="control"
+      [form]="form">
+    </app-selection-dropdown>
+    <app-slider
+      *ngSwitchCase="'slider'"
+      [control]="control">
+    </app-slider>
+
+  </div>
+</div>

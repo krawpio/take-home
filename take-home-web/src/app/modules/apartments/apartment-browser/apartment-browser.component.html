@@ -1,0 +1,15 @@
+<div class="panel">
+  <div>
+    <app-apartment-mini-search>
+      <ng-container details>
+        <div *ngFor="let control of filters" class="form-row">
+          <app-control [control]="control" ></app-control>
+        </div>
+        <button mat-flat-button color="accent" (click)="submit()">Show Results</button>
+      </ng-container>
+    </app-apartment-mini-search>
+    <app-apartment-item-panel [apartments]="apartments"></app-apartment-item-panel>
+  </div>
+  <app-map [locations]="apartments"></app-map>
+</div>
+

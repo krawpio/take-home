@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline"
+                [id]="control.key"
+                [style.width.px]="control.width">
+  <mat-label>{{control.placeholder}}</mat-label>
+  <input matInput
+         [type]="control.type"
+         [placeholder]="control.placeholder"
+         (input)="input($event)"
+         [value]="control.value"
+         [readonly]="control.readonly">
+
+</mat-form-field>
+
+

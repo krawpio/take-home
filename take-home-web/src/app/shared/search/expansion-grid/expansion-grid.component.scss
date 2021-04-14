@@ -1,0 +1,52 @@
+.expansion-grid {
+  .expansion-panel {
+    border-radius: 2px;
+
+    .expansion-header {
+      height: 58px;
+      background-color: #F5EDE4;
+
+
+      .expansion-title {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 140%;
+      }
+
+      .description {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 140%;
+
+        span {
+          width:100%;
+          text-align:right;
+
+          &.collapse {
+            padding-top:3px;
+          }
+        }
+      }
+    }
+
+  }
+
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
+
+    .mat-expansion-panel {
+      box-shadow: none;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 30px 0;
+    }
+
+    .mat-expansion-panel-header {
+      border-radius: 2px;
+    }
+  }
+}

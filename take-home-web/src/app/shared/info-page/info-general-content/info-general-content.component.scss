@@ -1,0 +1,18 @@
+.elements {
+  display: grid;
+  grid-template-columns: auto auto;
+
+  .element {
+    margin-top: 20px;
+
+    .title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 23px;
+      color: #A6A6A6;
+    }
+    .value {
+      margin-top: 4px;
+    }
+  }
+}

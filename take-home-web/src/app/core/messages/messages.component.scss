@@ -1,0 +1,33 @@
+.message {
+  width: 340px;
+  height: 114px;
+  background-color: #262C47;
+  border-radius: 4px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 40px;
+  }
+
+  .data {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 140%;
+    width: 180px;
+  }
+
+  .dismiss {
+    height: 100%;
+    width: 40px;
+    justify-content: right;
+    .dismiss-button {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

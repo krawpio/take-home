@@ -1,0 +1,12 @@
+<div class="elements">
+    <div *ngFor="let field of infoFields" class="element">
+      <ng-container *ngIf="editMode && field.key; else staticField">
+        <div class="title">{{field.label}}:</div>
+        <app-control [control]="field" hideLabel="true"></app-control>
+      </ng-container>
+      <ng-template #staticField>
+        <div class="title">{{field.label}}:</div>
+        <div class="value">{{field.value}}</div>
+      </ng-template>
+    </div>
+</div>

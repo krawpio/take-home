@@ -1,0 +1,9 @@
+<div *ngIf="apartment$ | async as apartment">
+  <app-info-page
+    title="Apartment for {{apartment.name}}"
+    [actions]="actions"
+    [infoFields]="infoFields"
+    [updateUrl]="updateUrl"
+    [editable]="editable">
+  </app-info-page>
+</div>

@@ -1,0 +1,57 @@
+<div class="search">
+  <div class="filters-panel">
+    <div class="row">
+      <div class="title">{{title}} ({{itemsNr}})
+      </div>
+      <div *ngFor="let filter of filters" class="filter-tab">
+        <app-filter-button [filter]="filter" (click)="searchWithFilter(filter)"></app-filter-button>
+      </div>
+
+      <div class="more-filters">
+        <mat-icon svgIcon="filters"></mat-icon>
+        <a (click)="togglePanel()">{{panelOpenState ? 'Less' : 'More'}} filters</a>
+      </div>
+      <div class="search-box">
+        <mat-form-field appearance="outline">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Tekst" (keyup)="applyFilter($event)"/>
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div *ngIf="filledFilters()?.length > 0 && !panelOpenState" class="filter-chips">
+      <span>Filtry</span>
+      <mat-chip-list>
+        <mat-chip *ngFor="let filter of filledFilters()"
+                  [removable]="true"
+                  (removed)="removeFilter(filter)"
+                  class="filter-chip">
+          {{filter.getChipValue()}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+
+
+  <mat-expansion-panel [expanded]="panelOpenState" disabled="true" hideToggle="true">
+    <mat-expansion-panel-header class="hidden">
+      <mat-panel-title>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="extended-filters">
+      <app-expanded-filters-panel
+        [controls]="extendedFilters"
+        [style]="extendedFiltersStyle">
+      </app-expanded-filters-panel>
+    </div>
+    <div class="filters-buttons-panel">
+      <button mat-button (click)="togglePanel()">Cance</button>
+      <button mat-flat-button color="accent" (click)="search()">Show Results</button>
+    </div>
+  </mat-expansion-panel>
+</div>
+<div *ngIf="result$ | async as result" class="grid-table">
+  <app-grid-table [data]="result" (itemsSelected)="gridItemsSelected($event)"></app-grid-table>
+</div>
+<app-action-panel [selected]="selected" [actions]="actions"></app-action-panel>

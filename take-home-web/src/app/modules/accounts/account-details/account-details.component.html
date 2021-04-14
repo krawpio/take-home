@@ -1,0 +1,9 @@
+<div *ngIf="account$ | async as account">
+  <app-info-page
+    title="Account for {{account.login}}"
+    [editable]="true"
+    [actions]="actions"
+    [infoFields]="infoFields"
+    [updateUrl]="updateUrl">
+  </app-info-page>
+</div>

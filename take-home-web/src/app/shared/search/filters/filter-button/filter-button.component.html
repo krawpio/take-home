@@ -1,0 +1,5 @@
+<button mat-flat-button color="accent" class="filter-button"
+        [ngClass]="filter.active ? 'active' : 'inactive'">
+  <mat-icon svgIcon="check" *ngIf="filter.active" class="icon"></mat-icon>
+  <span>{{filter.title}}</span>
+</button>

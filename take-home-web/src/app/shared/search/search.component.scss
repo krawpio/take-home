@@ -1,0 +1,111 @@
+.search {
+  background-color: white;
+  //margin-bottom: 20px;
+  font-style: normal;
+
+  .filters-panel {
+    //border-bottom: 1px solid #F5F5F5;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        flex: 1;
+
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 140%;
+        color: #020000;
+        padding: 40px;
+      }
+
+      .filter-tab {
+
+      }
+
+      .more-filters {
+        display: flex;
+        align-items: center;
+        flex: -2;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 140%;
+        width: 150px;
+        cursor: pointer;
+        margin-left:30px;
+
+        a {
+          color: #BB9872;
+          padding-left: 10px;
+          text-decoration-line: none;
+        }
+      }
+
+      .search-box {
+        flex: -1;
+        padding-right: 40px;
+
+
+      }
+    }
+
+    .filter-chips {
+      padding-left: 40px;
+      padding-bottom:20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        margin-right: 20px;
+      };
+
+      .filter-chip {
+        background-color: #d7daee;
+      }
+    }
+  }
+
+  .extended-filters {
+    padding:20px 40px;
+  }
+  .hidden {
+    display: none;
+  }
+
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
+
+    .mat-expansion-panel {
+      box-shadow: none;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0;
+    }
+
+  }
+
+  .filters-buttons-panel {
+    border-top: 1px solid #F5F5F5;
+    display: flex;
+    justify-content: flex-end;
+    margin-top:30px;
+    padding: 20px 40px;
+    //border-bottom: 1px solid #F5F5F5;
+
+    button {
+      margin-left: 20px;
+    }
+  }
+}
+
+.grid-table {
+  padding-left:40px;
+  padding-right: 40px;
+}
+

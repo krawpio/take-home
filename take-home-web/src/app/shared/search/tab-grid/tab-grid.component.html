@@ -1,0 +1,32 @@
+<div class="tab-grid">
+  <div class="filter-tabs">
+    <div *ngFor="let filterGroup of filterGroups" class="filter-tab">
+      <div class="header-group">
+        <h2 class="title">{{filterGroup.title}}</h2>
+        <div class="number"><span>{{filterGroup.itemNr}}</span></div>
+      </div>
+      <div class="filters">
+        <div *ngFor="let filter of filterGroup.filters">
+          <app-filter-tab-button
+            [filter]="filter"
+            (click)="filterApply(filter, filterGroup.modelType)">
+          </app-filter-tab-button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-expansion-panel [expanded]="panelOpenState" disabled="true" hideToggle="true">
+    <mat-expansion-panel-header class="hidden">
+      <mat-panel-title>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="extended-filters">
+      <ng-container *ngIf="result$ | async as result">
+        <app-grid-table [data]="result" [noSelection]="true"></app-grid-table>
+      </ng-container>
+    </div>
+  </mat-expansion-panel>
+</div>
+
+
+

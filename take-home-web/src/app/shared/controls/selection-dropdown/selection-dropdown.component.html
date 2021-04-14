@@ -1,0 +1,11 @@
+<mat-form-field
+  appearance="outline"
+  color="accent"
+  class="dropdown"
+  [style.width.px]="control.width"
+  [id]="control.key">
+  <mat-label>{{control.placeholder}}</mat-label>
+  <mat-select [(value)]="control.value" multiple >
+    <mat-option *ngFor="let opt of control.options" [value]="opt.key">{{opt.value}}</mat-option>
+  </mat-select>
+</mat-form-field>

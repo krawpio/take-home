@@ -1,0 +1,28 @@
+$invalid-color: #FF6760;
+
+
+.standard-input {
+  margin-top:10px;
+
+  ::ng-deep .mat-form-field {
+    font-size: 16px;
+    font-style: normal;
+  }
+}
+
+.standard-dropdown {
+  font-size: 16px;
+  font-style: normal;
+}
+
+label {
+  font-weight: normal;
+}
+
+.invalid-feedback {
+  color: $invalid-color;
+  margin-top:0;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 140%;
+}

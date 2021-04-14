@@ -1,0 +1,14 @@
+.tmp
+*.tmp
+*.tmp.*
+*.env
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+
+*.log
+log.txt
+npm-debug.log*
+
+/.idea
+/.versions

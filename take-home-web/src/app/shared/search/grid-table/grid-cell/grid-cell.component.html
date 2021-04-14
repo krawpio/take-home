@@ -1,0 +1,20 @@
+<ng-container *ngIf="isChip()" xmlns="http://www.w3.org/1999/html">
+  <div class="chip" [style.background-color]="chipColor()">
+    <ng-container *ngTemplateOutlet="gridCellValue"></ng-container>
+  </div>
+</ng-container>
+<ng-container *ngIf="!isChip()">
+  <ng-container *ngTemplateOutlet="gridCellValue"></ng-container>
+</ng-container>
+
+
+<ng-template #gridCellValue>
+  <ng-container *ngIf="isLink()" >
+    <a routerLink="{{column.routerLink}}/{{element[column.routerLinkIdName]}}">
+      <span>{{cellValue(element, column)}}</span>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="!isLink()">
+    <span>{{cellValue(element, column)}}</span>
+  </ng-container>
+</ng-template>

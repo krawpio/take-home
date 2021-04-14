@@ -1,0 +1,19 @@
+<div class="buttons-panel">
+  <ng-container *ngFor="let action of actions">
+    <ng-container *ngIf="action.visible" [ngSwitch]="action.buttonType">
+      <button *ngSwitchDefault
+              mat-button
+              (click)="functionApply(action)">
+        <mat-icon *ngIf="action.icon">{{action.icon}}</mat-icon>
+        {{action.label}}
+      </button>
+      <button *ngSwitchCase="'flat'"
+              mat-flat-button
+              (click)="functionApply(action)"
+              color="accent">
+        <mat-icon *ngIf="action.icon">{{action.icon}}</mat-icon>
+        {{action.label}}
+      </button>
+    </ng-container>
+  </ng-container>
+</div>

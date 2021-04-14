@@ -1,0 +1,7 @@
+<mat-nav-list class="main-menu">
+  <app-main-menu-element *ngFor="let menu of menuElements"
+    [menu]="menu"
+    [selected]="isActive(menu)"
+    (click)="onSelect(menu)">
+  </app-main-menu-element>
+</mat-nav-list>

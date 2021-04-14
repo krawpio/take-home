@@ -1,0 +1,26 @@
+<div class="daterange" [style.width.px]="control.width">
+  <span>From</span>
+  <mat-form-field appearance="outline" class="date-input">
+    <mat-label>{{control.placeholder}}</mat-label>
+    <input matInput
+           [matDatepickerFilter]="dateFilter"
+           [matDatepicker]="picker"
+           [value]="control.value"
+           (dateInput)="setFromValue($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <span>To</span>
+  <mat-form-field appearance="outline" class="date-input">
+    <mat-label>{{control.placeholder}}</mat-label>
+    <input matInput
+           [matDatepickerFilter]="dateFilter"
+           [matDatepicker]="toPicker"
+           [value]="control.toValue"
+           (dateInput)="setToValue($event)">
+    <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+    <mat-datepicker #toPicker></mat-datepicker>
+  </mat-form-field>
+
+</div>
+

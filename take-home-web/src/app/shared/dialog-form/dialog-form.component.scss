@@ -1,0 +1,23 @@
+.dialog {
+  background: #FFFFFF;
+  border-radius: 4px;
+
+  h2 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 140%;
+    margin-bottom:40px
+  }
+
+  //h5 {
+  //  font-style: normal;
+  //  font-weight: normal;
+  //  font-size: 16px;
+  //  line-height: 140%;
+  //}
+
+
+  .dialog-buttons {
+    justify-content: space-between;
+  }
+}

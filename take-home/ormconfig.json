@@ -1,0 +1,10 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "krawpio",
+  "password": "",
+  "database": "take_home",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}

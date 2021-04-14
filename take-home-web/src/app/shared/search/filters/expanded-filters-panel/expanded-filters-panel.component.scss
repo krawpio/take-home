@@ -1,0 +1,23 @@
+.grid-column2 {
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-gap: 20px;
+}
+
+.grid-column3 {
+  display: grid;
+  grid-template-columns: auto auto min-content;
+  grid-gap: 20px;
+}
+
+.grid-column4 {
+  display: grid;
+  grid-template-columns: auto auto auto min-content;
+  grid-gap: 20px;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+}

@@ -1,0 +1,49 @@
+$main-color: #E3CBB1;
+$hover-color: rgba(227, 203, 177, 0.25);
+$arrow-width: 7px;
+
+.filter-button {
+  height: 70px;
+  min-width:250px;
+  background: white;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 140%;
+  border: 2px solid $main-color;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  color: #020000;
+
+  &.active {
+    background-color: $main-color;
+  }
+
+  &.active:after {
+    content: "";
+    display: block;
+    border-width: $arrow-width $arrow-width 0;
+    border-style: solid;
+    border-color: $main-color transparent transparent;
+    margin-left: -$arrow-width;
+    position: absolute;
+    bottom: -$arrow-width;
+    left: 50%;
+  }
+
+  &:hover {
+    background: $hover-color;
+  }
+  &.active:hover {
+    background-color: $main-color;
+  }
+
+  .items {
+    padding: 18px 30px;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}

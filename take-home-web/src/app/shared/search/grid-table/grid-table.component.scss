@@ -1,0 +1,85 @@
+mat-footer-row, mat-header-row, mat-row {
+  border-bottom-width: 10px;
+}
+
+.grid-table {
+  width: 100%;
+  border: none;
+  th {
+    color: #A6A6A6;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 23px;
+    background-color: #F5F5F5;
+    border: none;
+  }
+
+  tr {
+    td {
+      color: #020000;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 140%;
+      border-bottom: 1px solid #F5F5F5;
+    }
+  }
+
+  tr:last-child {
+    td {
+      border: none;
+    }
+  }
+
+  tr:hover {
+    background-color: #D7DAEE;
+  }
+
+  ::ng-deep .mat-sort-header-button {
+    border: none !important;
+  }
+}
+
+.grid-paginator {
+
+  ::ng-deep .mat-paginator-container {
+    justify-content: space-between;
+
+    .mat-paginator-page-size {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 140%;
+      color: #020000;
+
+
+    }
+
+    .mat-paginator-page-size-select {
+      width:40px;
+      margin-left:15px;
+
+      .mat-select-value-text {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+      }
+    }
+
+    .mat-paginator-range-label {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      padding-top: 4px;
+      color: #020000;
+    }
+
+    .mat-form-field-underline {
+      //height:0;
+      display: none;
+    }
+
+  }
+}
+

@@ -1,0 +1,10 @@
+.daterange {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 20px;
+  align-items: center;
+
+  .date-input {
+    width:190px;
+  }
+}

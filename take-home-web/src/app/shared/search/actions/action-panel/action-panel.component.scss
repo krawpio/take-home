@@ -1,0 +1,21 @@
+.actions-panel {
+  padding: 20px 40px;
+  border-top: 1px solid #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .help-panel {
+    display: flex;
+    align-items: center;
+  }
+  button {
+    margin-left:10px;
+
+    &.stroked-button {
+      border: 1px solid #E3CBB1;
+      border-radius: 2px;
+    }
+  }
+}
+

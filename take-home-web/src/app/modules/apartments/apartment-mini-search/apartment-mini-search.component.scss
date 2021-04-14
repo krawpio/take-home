@@ -1,0 +1,23 @@
+::ng-deep {
+  .mat-form-field-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+
+  .mat-expansion-panel {
+    box-shadow: none !important;
+    border-radius: 0;
+  }
+  //
+  //.mat-expansion-panel-body {
+  //  padding: 30px 0;
+  //}
+
+  .mat-expansion-panel-header {
+    border-radius: 0;
+  }
+}
+
+.search-panel {
+  border-bottom: 1px solid #F5F5F5;
+}

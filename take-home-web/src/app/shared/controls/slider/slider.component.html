@@ -1,0 +1,21 @@
+<div class="slider" [style.width.px]="control.width">
+  <mat-form-field appearance="outline" class="slider-input">
+    <input matInput [value]="control.value" (input)="setFromValue($event)" type="number">
+  </mat-form-field>
+
+  <ng5-slider
+    class="range"
+    [(value)]="control.value"
+    [(highValue)]="control.toValue"
+    [options]="{
+          floor: control.fromRange,
+          ceil: control.toRange,
+          hideLimitLabels: true,
+          hidePointerLabels: true
+        }"
+  ></ng5-slider>
+
+  <mat-form-field appearance="outline" class="slider-input">
+    <input matInput [value]="control.toValue" (input)="setToValue($event)" type="number">
+  </mat-form-field>
+</div>

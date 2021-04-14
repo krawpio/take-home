@@ -1,0 +1,13 @@
+<div [ngClass]="data.cssClass" class="message">
+  <mat-icon svgIcon="messages-check" class="icon"></mat-icon>
+  <div class="data">{{data.message}}</div>
+  <div class="dismiss">
+    <button mat-icon-button (click)="snackBarRef.dismiss()" class="dismiss-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+
+
+
+

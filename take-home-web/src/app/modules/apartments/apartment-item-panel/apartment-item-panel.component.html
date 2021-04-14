@@ -1,0 +1,6 @@
+<mat-nav-list class="apartment-list">
+  <app-apartment-item *ngFor="let apartment of apartments" [apartment]="apartment">
+  </app-apartment-item>
+  <div *ngIf='apartments?.length === 0' class="no-results">No results</div>
+
+</mat-nav-list>
