@@ -5,6 +5,9 @@ import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../../../core/auth/authentication.service';
 import {MessageService} from '../../../core/messages/message.service';
 import {LoadingService} from '../../../shared/overlay/loading.service';
+import {AccountAddDialogComponent} from '../account-add-dialog/account-add-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {AccountAddData} from '../account-add-dialog/account-add-data';
 
 
 @Component({
@@ -24,7 +27,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private messageService: MessageService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private dialog: MatDialog
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUser) {
@@ -82,6 +86,17 @@ export class LoginComponent implements OnInit {
         });
   }
 
+  signUp() {
+    this.dialog.open(AccountAddDialogComponent, {
+      width: '544px',
+      data: new AccountAddData({
+        url: '/auth/signup',
+        message: 'Account has been created. Please sign in',
+        redirect: false
+      })
+    });
+  }
+
   private startLoading(): void {
     this.loading = true;
     this.loadingService.open();
@@ -91,4 +106,6 @@ export class LoginComponent implements OnInit {
     this.loading = false;
     this.loadingService.close();
   }
+
+
 }

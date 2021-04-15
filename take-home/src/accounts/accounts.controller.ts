@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Patch, Post, Query} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch, Post, Query} from '@nestjs/common';
 import {Role} from '../auth/enums/role.enum';
 import {Roles} from '../auth/auth.decorator';
 
@@ -13,7 +13,14 @@ export class AccountsController {
 
   @Post()
   @Roles(Role.ADMIN)
-  create(@Body() createAccountDto: CreateAccountDto) {
+  async create(@Body() createAccountDto: CreateAccountDto) {
+    const account = await this.accountsService.findByLogin(createAccountDto.login);
+    if (account) {
+      throw new HttpException({
+        status: HttpStatus.CONFLICT,
+        error: 'login already exists'
+      }, HttpStatus.CONFLICT);
+    }
     return this.accountsService.create(createAccountDto);
   }
 

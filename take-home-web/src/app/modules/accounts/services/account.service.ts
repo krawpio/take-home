@@ -34,10 +34,10 @@ export class AccountService {
     );
   }
 
-  createAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>('/accounts', account)
+  createAccount(account: Account, url: string, message: string): Observable<Account> {
+    return this.http.post<Account>(url, account)
       .pipe(
-        tap(acc => this.messageService.sendInfo(`Account for ${account.login} has been created`)));
+        tap(acc => this.messageService.sendInfo(message)));
   }
 
   delete(id: number) {

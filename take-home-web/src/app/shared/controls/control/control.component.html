@@ -2,6 +2,7 @@
   <label *ngIf="!hideLabel" [attr.for]="control.key">{{control.label}}</label>
   <div *ngIf="form && isInvalid()" class="invalid-feedback">
     <div *ngIf="form.controls[control.key].errors.required">Required</div>
+    <div *ngIf="form.controls[control.key].errors.incorrect">{{form.controls[control.key].errors.incorrect}}</div>
   </div>
   <div [ngSwitch]="control.controlType" class="standard-input">
     <app-textbox

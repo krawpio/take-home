@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {DateComponent} from './date/date.component';
 import {DropdownComponent} from './dropdown/dropdown.component';
 import {TextboxComponent} from './textbox/textbox.component';
-import {DaterangeComponent} from './daterange/daterange.component';
 import {CommonModule} from '@angular/common';
 import {MatControlsModule} from '../material/mat-controls.module';
 import {SelectionDropdownComponent} from './selection-dropdown/selection-dropdown.component';
@@ -19,7 +18,6 @@ import {Ng5SliderModule} from 'ng5-slider';
         DateComponent,
         DropdownComponent,
         TextboxComponent,
-        DaterangeComponent,
         SelectionDropdownComponent,
         RadioComponent,
         SliderComponent

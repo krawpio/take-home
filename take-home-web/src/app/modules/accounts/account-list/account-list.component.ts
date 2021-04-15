@@ -8,6 +8,7 @@ import {AccountService} from '../services/account.service';
 import {SearchComponent} from '../../../shared/search/search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AccountAddDialogComponent} from '../account-add-dialog/account-add-dialog.component';
+import {AccountAddData} from '../account-add-dialog/account-add-data';
 
 @Component({
   selector: 'app-account-list',
@@ -101,6 +102,7 @@ export class AccountListComponent implements OnInit {
   private createAccount(): void {
     this.dialog.open(AccountAddDialogComponent, {
       width: '544px',
+      data: new AccountAddData({url: '/accounts', message: 'Account has been created', redirect: true})
     });
   }
 }

@@ -64,9 +64,8 @@ export class ApartmentsController {
       return this.apartmentsService.update(+id, updateApartmentDto);
     } else {
       throw new HttpException({
-        status: HttpStatus.FORBIDDEN,
-        error: 'No Acceess',
-      }, HttpStatus.FORBIDDEN);
+        status: HttpStatus.METHOD_NOT_ALLOWED,
+      }, HttpStatus.METHOD_NOT_ALLOWED);
     }
   }
 
@@ -78,9 +77,8 @@ export class ApartmentsController {
       return this.apartmentsService.remove(+id);
     } else {
       throw new HttpException({
-        status: HttpStatus.FORBIDDEN,
-        error: 'No Acceess',
-      }, HttpStatus.FORBIDDEN);
+        status: HttpStatus.METHOD_NOT_ALLOWED,
+      }, HttpStatus.METHOD_NOT_ALLOWED);
     }
   }
 }

@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ControlBase} from '../../../shared/controls/control-base';
 import {AccountService} from '../services/account.service';
 import {Router} from '@angular/router';
@@ -9,6 +9,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {Account} from '../model/account';
 import {ControlService} from '../../../shared/controls/services/control.service';
+import {AccountAddData} from './account-add-data';
 
 @Component({
   selector: 'app-account-add-dialog',
@@ -25,7 +26,8 @@ export class AccountAddDialogComponent implements OnInit {
     private accountService: AccountService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private controlService: ControlService
+    private controlService: ControlService,
+    @Inject(MAT_DIALOG_DATA) public data: AccountAddData,
   ) {
   }
 
@@ -46,15 +48,17 @@ export class AccountAddDialogComponent implements OnInit {
       return;
     }
     const account = this.controlService.controlsToModelEntity(new Account(), this.controls);
-    this.accountService.createAccount(account)
+    this.accountService.createAccount(account, this.data.url, this.data.message)
       .pipe(first())
       .subscribe(
         data => {
           this.dialogRef.close();
-          this.router.navigate([`/account/${data.id}`]);
+          if (this.data.redirect) {
+            this.router.navigate([`/account/${data.id}`]);
+          }
         },
         error => {
-          this.f.username.setErrors({incorrect: error});
+          this.f.login.setErrors({incorrect: 'Login already exists'});
         });
   }
 
