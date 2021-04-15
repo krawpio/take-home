@@ -20,12 +20,12 @@ export class ApartmentsService {
     return this.apartmentsRepository.save(this.apartmentsRepository.create(createApartmentDto));
   }
 
-  async findAll(role: Role, options?: FindManyOptions): Promise<Apartment[]> {
-    return this.apartmentsRepository.find(ApartmentsService.roleOptions(role, options));
+  async findAll(role: Role, userId: number, options?: FindManyOptions): Promise<Apartment[]> {
+    return this.apartmentsRepository.find(ApartmentsService.roleOptions(role, userId, options));
   }
 
-  findOne(id: number, role: Role, options?: FindOneOptions) {
-    return this.apartmentsRepository.findOne(id, ApartmentsService.roleOptions(role, options));
+  async findOne(id: number, role: Role, userId: number, options?: FindOneOptions) {
+    return this.apartmentsRepository.findOne(id, ApartmentsService.roleOptions(role, userId, options));
   }
 
   update(id: number, updateApartmentDto: UpdateApartmentDto) {
@@ -36,13 +36,20 @@ export class ApartmentsService {
     return this.apartmentsRepository.delete(id);
   }
 
-  private static roleOptions(role, options) {
+  private static roleOptions(role, userId, options) {
     if (role == Role.CLIENT) {
       if (options) {
         options.where['rentable'] = Equal(true);
         return options;
       } else {
         return {where: {rentable : Equal(true)}};
+      }
+    } else if (role == Role.REALTOR) {
+      if (options) {
+        options.where['realtorId'] = Equal(userId);
+        return options;
+      } else {
+        return {where: {realtorId : Equal(userId)}};
       }
     }
     return options;

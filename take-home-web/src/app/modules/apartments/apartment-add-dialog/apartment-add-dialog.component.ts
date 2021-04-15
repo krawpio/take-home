@@ -40,15 +40,19 @@ export class ApartmentAddDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.controls = this.getControls();
-    const realtorsControl = this.getRealtorsControl();
-    this.controls.push(realtorsControl);
+    const role = this.authenticationService.role;
+    if (role === Role.ADMIN) {
+      const realtorsControl = this.getRealtorsControl();
+      this.controls.push(realtorsControl);
+      this.accountService.findAllRealtors().subscribe((realtors: Account[]) => {
+          const options = [];
+          realtors.forEach(realtor => options.push({key: realtor.id, value: `${realtor.firstName} ${realtor.lastName}`}));
+          realtorsControl.options = options;
+        }
+      );
+    }
     this.form = this.formBuilder.group(this.controlService.controlsToValidOptions(this.controls));
-    this.accountService.findAllRealtors().subscribe((realtors: Account[]) => {
-        const options = [];
-        realtors.forEach(realtor => options.push({key: realtor.id, value: `${realtor.firstName} ${realtor.lastName}`}));
-        realtorsControl.options = options;
-      }
-    );
+
   }
 
   get f() {

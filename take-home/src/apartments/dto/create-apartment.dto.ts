@@ -10,4 +10,5 @@ export class CreateApartmentDto {
   realtorId: number;
   lat: number;
   long: number;
+  rentable: boolean;
 }

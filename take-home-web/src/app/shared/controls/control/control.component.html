@@ -10,12 +10,6 @@
       [control]="control"
       [form]="form">
     </app-textbox>
-    <app-daterange
-      *ngSwitchCase="'daterange'"
-      (valueChanged)="onValueChange($event)"
-      [control]="control"
-      [form]="form">
-    </app-daterange>
     <app-date
       *ngSwitchCase="'date'"
       (valueChanged)="onValueChange($event)"

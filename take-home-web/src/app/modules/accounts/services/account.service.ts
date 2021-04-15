@@ -41,7 +41,7 @@ export class AccountService {
   }
 
   delete(id: number) {
-    return this.http.delete('/accounts', {params : AccountService.idParam(id)})
+    return this.http.delete(`/accounts/${id}`)
       .pipe(tap(() => this.messageService.sendInfo(`Account has been deleted`)));
   }
 

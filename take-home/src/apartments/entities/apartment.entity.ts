@@ -1,6 +1,6 @@
 import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
 import {Account} from '../../accounts/entities/acount.entity';
-import {Exclude, Expose} from 'class-transformer';
+import {Exclude} from 'class-transformer';
 
 @Entity()
 export class Apartment {
@@ -28,7 +28,7 @@ export class Apartment {
   @Column({name: 'createddate'})
   createdDate: Date;
 
-  @ManyToOne(() => Account, {eager: true})
+  @ManyToOne(() => Account, {eager: true, onUpdate: 'CASCADE', onDelete: 'CASCADE'})
   @JoinColumn([{ name: 'realtorid' , referencedColumnName: 'id'}])
   @Exclude()
   realtor: Account;
@@ -36,10 +36,6 @@ export class Apartment {
   @Column({name: 'realtorid'})
   realtorId :number
 
-  @Expose()
-  get realtorName(): string {
-    return `${this.realtor.firstName} ${this.realtor.lastName}`;
-  }
 
   @Column('real',{nullable: true})
   lat: number;

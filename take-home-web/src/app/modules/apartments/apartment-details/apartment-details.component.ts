@@ -60,12 +60,7 @@ export class ApartmentDetailsComponent implements OnInit {
           action: () => this.rent(apartment, !apartment.rentable)
         }),
         new ActionButton({
-          label: lab,
-          buttonType: 'flat',
-          action: () => this.rent(apartment, !apartment.rentable)
-        }),
-        new ActionButton({
-          label: lab,
+          label: 'Delete Apartment',
           buttonType: 'flat',
           action: () => this.deleteAparment(apartment.id)
         }),

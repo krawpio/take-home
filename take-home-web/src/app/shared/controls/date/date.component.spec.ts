@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {DateComponent} from './daterange.component';
+import {DateComponent} from './date.component';
 
-describe('DaterangeComponent', () => {
+describe('DateComponent', () => {
   let component: DateComponent;
   let fixture: ComponentFixture<DateComponent>;
 

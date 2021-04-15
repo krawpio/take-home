@@ -54,12 +54,6 @@ export class Apartment implements EntityLocation {
   })
   rooms: number;
 
-  @autoserializeAs(String)
-  @Column({
-    title: 'Realtor Name',
-  })
-  realtorName: string;
-
   @autoserializeAs(Boolean)
   @Column({
     title: 'Rentable',

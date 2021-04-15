@@ -51,7 +51,7 @@ export class ApartmentService {
   }
 
   delete(id: number) {
-    return this.http.delete('/apartments', {params : ApartmentService.idParam(id)})
+    return this.http.delete(`/apartments/${id}`)
       .pipe(tap(() => this.messageService.sendInfo(`Apartment has been deleted`)));
   }
 

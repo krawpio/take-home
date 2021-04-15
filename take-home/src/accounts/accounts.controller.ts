@@ -25,6 +25,7 @@ export class AccountsController {
   }
 
   @Get('/findByFilter')
+  @Roles(Role.ADMIN)
   async findByFilter(@Query() query) {
     let queryDto = new QueryAccountsDto(query)
     return this.accountsService.findAll(queryDto.conditions())

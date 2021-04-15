@@ -10,10 +10,5 @@ CREATE TABLE apartment (
     lat real,
     long real,
     rentable bool,
-    realtorId INTEGER references account(id)
+    realtorId INTEGER references account(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
-
-INSERT INTO apartment(name, description, address, area, price, rooms, createddate, lat, long) values
-('Aparment', 'nice apartment', 'Warsaw', 123, 40, 5, '2021-04-01'::date, 52.229676, 21.012229);
