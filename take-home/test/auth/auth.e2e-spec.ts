@@ -8,12 +8,18 @@ import * as request from 'supertest';
 import {AuthModule} from '../../src/auth/auth.module';
 import {ConfigModule} from '@nestjs/config';
 import {AccountsModule} from '../../src/accounts/accounts.module';
-import {hashPassword} from '../../src/accounts/accounts.service';
+import {AccountsService} from '../../src/accounts/accounts.service';
+import {hashSync} from 'bcrypt';
 
+
+export function hashPassword(password): string {
+  return hashSync(password, Number(process.env.HASH_SALT));
+}
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
   let accountRepository: Repository<Account>;
+  let accountService: AccountsService;
 
   beforeAll(async () => {
     // jest.setTimeout(30000);
@@ -42,13 +48,22 @@ describe('AppController (e2e)', () => {
     app = module.createNestApplication();
     await app.init();
     accountRepository = module.get('AccountRepository');
+    accountService = module.get('AccountsService');
   });
 
   beforeEach(async () => {
-    await accountRepository.save([
-      {login: 'admin', password: hashPassword('adminpass'), role: Role.ADMIN, firstName: 'john', lastName: 'admin'},
-      {login: 'realtor', password: 'pass', role: Role.REALTOR, firstName: 'john', lastName: 'admin'}
-    ]);
+    await accountRepository.save({
+      login: 'admin',
+      password: hashPassword('adminpass'),
+      role: Role.ADMIN,
+      firstName: 'john',
+      lastName: 'admin'})
+    await accountRepository.save({
+      login: 'realtor',
+      password: hashPassword('pass'),
+      role: Role.REALTOR,
+      firstName: 'john',
+      lastName: 'realtor'})
   });
 
   it('/no auth', () => {

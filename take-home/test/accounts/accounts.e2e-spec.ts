@@ -36,20 +36,21 @@ describe('AppController (e2e)', () => {
   });
 
 
-  it(`create account`, async () => {
+  it(`create realtor account`, async () => {
     const response = await request(app.getHttpServer())
       .post('/accounts')
-      .send({login: 'login', password: 'pass', role: 'ADMIN', firstName: 'first', lastName: 'last'});
+      .send({login: 'login', password: 'pass', role: Role.REALTOR, firstName: 'first', lastName: 'last'});
 
     expect(response.status).toBe(201);
     expect(response.body.login).toBe('login');
   });
 
 
-  it(`get all accounts`, async () => {
+  it(`get all accounts no admin`, async () => {
     await repository.save([
       {login: 'login1', password: 'pass', firstName: 'first', lastName: 'last', role: Role.CLIENT},
-      {login: 'login2', password: 'pass', firstName: 'first', lastName: 'last', role: Role.ADMIN}
+      {login: 'login2', password: 'pass', firstName: 'first', lastName: 'last', role: Role.REALTOR},
+      {login: 'login3', password: 'pass', firstName: 'first', lastName: 'last', role: Role.ADMIN}
     ]);
 
     const response = await request(app.getHttpServer())
@@ -62,22 +63,22 @@ describe('AppController (e2e)', () => {
   it(`get accounts by query `, async () => {
     await repository.save([
       {login: 'login1', password: 'pass', firstName: 'first', lastName: 'last', role: Role.CLIENT},
-      {login: 'login2', password: 'pass', firstName: 'first', lastName: 'last', role: Role.ADMIN},
-      {login: 'login3', password: 'pass', firstName: 'john', lastName: 'last', role: Role.ADMIN},
-      {login: 'login4', password: 'pass', firstName: 'first', lastName: 'john', role: Role.ADMIN},
-      {login: 'alog2', password: 'pass', firstName: 'first', lastName: 'last', role: Role.ADMIN},
-      {login: 'other', password: 'pass', firstName: 'first', lastName: 'last', role: Role.ADMIN}
+      {login: 'login2', password: 'pass', firstName: 'first', lastName: 'last', role: Role.CLIENT},
+      {login: 'login3', password: 'pass', firstName: 'john', lastName: 'last', role: Role.CLIENT},
+      {login: 'login4', password: 'pass', firstName: 'first', lastName: 'john', role: Role.CLIENT},
+      {login: 'alog2', password: 'pass', firstName: 'first', lastName: 'last', role: Role.CLIENT},
+      {login: 'other', password: 'pass', firstName: 'first', lastName: 'last', role: Role.REALTOR}
     ]);
 
     const response = await request(app.getHttpServer())
       .get('/accounts/findByFilter')
-      .query({login: 'log', firstName: 'fir', lastName: 'las', role: 'ADMIN'});
+      .query({login: 'log', firstName: 'fir', lastName: 'las'});
 
     expect(response.status).toBe(200);
-    expect(response.body.length).toBe(2);
+    expect(response.body.length).toBe(3);
   });
 
-  it(`update apartment`, async () => {
+  it(`update account`, async () => {
     await repository.save([
       {login: 'login1', password: 'pass', firstName: 'first', lastName: 'last', role: Role.CLIENT},
     ]);
@@ -93,25 +94,8 @@ describe('AppController (e2e)', () => {
     expect(response.body.login).toBe('name-2');
   });
 
-  it(`delete apartment`, async () => {
-    await repository.save([
-      {login: 'login1', password: 'pass', firstName: 'first', lastName: 'last', role: Role.CLIENT},
-    ]);
 
-    const findResponse = await request(app.getHttpServer())
-      .get('/accounts');
-
-    let response = await request(app.getHttpServer())
-      .delete(`/accounts/${findResponse.body[0].id}`);
-
-    expect(response.status).toBe(200);
-    response = await request(app.getHttpServer())
-      .get('/accounts');
-    expect(response.status).toBe(200);
-    expect(response.body.length).toBe(0);
-  });
-
-  it(`delete apartment`, async () => {
+  it(`delete account`, async () => {
     await repository.save([
       {login: 'login1', password: 'pass', firstName: 'first', lastName: 'last', role: Role.CLIENT},
     ]);
